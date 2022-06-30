@@ -1,4 +1,6 @@
 const express = require("express");
+const { default: mongoose } = require("mongoose");
+const Workout = require('../models/workoutModel')
 
 const router = express.Router();
 
@@ -13,7 +15,14 @@ router.get("/:id", (req, res) => {
 });
 
 // POST a new workout
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
+  const {title, load, reps} = req.body
+  try{
+    const workout = await Workout.create({title, load, reps})
+    res.status(200).json(workout)
+  } catch (error){
+
+  }
   res.json({ mssg: "POST a new workout" });
 });
 
