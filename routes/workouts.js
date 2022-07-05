@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
   res.json({ mssg: "POST a new workout" });
 });
 
-// DELETE a workout
+// DELETE a workout 
 router.delete("/:id", (req, res) => {
   res.json({ mssg: "DELETE a workout" });
 });
